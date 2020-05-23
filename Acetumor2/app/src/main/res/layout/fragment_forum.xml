@@ -5,26 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fragments.ForumFragment">
+    tools:context=".fragments.ForumFragment"
+    >
+
 
     <SearchView
+        android:id="@+id/forum_search"
+        android:searchIcon="@drawable/ic_search"
         android:layout_width="match_parent"
-        android:layout_height="67dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/search_view_rounded" />
 
     <!-- A CardView that contains a TextView -->
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        card_view:cardCornerRadius="20dp"
-        card_view:cardBackgroundColor="@color/white">
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
+        android:background="@color/cardColor">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="top"
+            android:layout_marginHorizontal="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            card_view:cardCornerRadius="20dp"
 
+            android:elevation="20dp"
+            android:background="@drawable/search_view_rounded">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/cardColor"
+                    android:orientation="vertical">
 
-    </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="hiewfhe fhref re dwefrw?"
+                        android:textSize="32sp"
+                        >
+                    </TextView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="15dp">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_user"
+                            >
+                        </ImageView>
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:paddingStart="15dp"
+                            android:text="erhif fer te wrer ">
+
+                        </TextView>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="20dp"
+                        android:textSize="20sp"
+                        android:text="asdsd dwejwe fwed re erwrwe aed rwer fsdf ddw">
+
+                    </TextView>
+
+                    <RadioButton
+                        android:id="@+id/radioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="340dp"
+                        />
+
+                </LinearLayout>
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
 </FrameLayout>
