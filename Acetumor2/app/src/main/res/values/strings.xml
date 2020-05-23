@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Acetumor</string>
+    <string name="login_by_facebook">Login By Facebook</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_location">Location</string>
+    <string name="nav_info">Information</string>
+    <string name="nav_user">Record</string>
+</resources>
