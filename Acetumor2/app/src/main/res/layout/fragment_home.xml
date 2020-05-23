@@ -26,7 +26,8 @@
         android:padding="15dp"
         android:alpha="0.9"
         android:background="@drawable/search_view_rounded"
-        app:srcCompat="@drawable/ic_upload" />
+        app:srcCompat="@drawable/ic_upload"
+        android:contentDescription="@string/upload" />
 
     <EditText
         android:id="@+id/upload_label"
@@ -41,6 +42,7 @@
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:autofillHints="@string/upload" />
 
 </FrameLayout>
