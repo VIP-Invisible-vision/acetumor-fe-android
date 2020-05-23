@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import com.example.acetumor.R;
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link InfoFragment#newInstance} factory method to
+ * Use the {@link ForumFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class UserFragment extends Fragment {

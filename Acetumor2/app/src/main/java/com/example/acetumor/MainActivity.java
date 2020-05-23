@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.acetumor.fragments.HomeFragment;
-import com.example.acetumor.fragments.InfoFragment;
+import com.example.acetumor.fragments.ForumFragment;
 import com.example.acetumor.fragments.CompassFragment;
 import com.example.acetumor.fragments.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_location:
                             openFragment(CompassFragment.newInstance("", ""));
                             return true;
-                        case R.id.nav_info:
-                            openFragment(InfoFragment.newInstance("", ""));
+                        case R.id.nav_forum:
+                            openFragment(ForumFragment.newInstance("", ""));
                             return true;
                         case R.id.nav_user:
                             openFragment(UserFragment.newInstance("", ""));
