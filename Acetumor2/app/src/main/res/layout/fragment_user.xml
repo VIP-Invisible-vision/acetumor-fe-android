@@ -6,11 +6,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/cardColor"
             android:orientation="horizontal"
             >
             <Button
@@ -20,8 +20,8 @@
                 android:paddingStart="20dp"
 
                 android:textSize="32sp"
-                android:textColor="@color/white"
-                android:background="@color/colorPrimary"
+                android:textColor="@color/black"
+                android:background="@color/cardColor"
                 android:layout_marginTop="100dp"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
             <androidx.cardview.widget.CardView
@@ -50,6 +50,47 @@
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@color/white"
+                app:itemIconSize="28dp"
+                app:itemIconTint="@color/colorSecondary"
+                app:itemTextColor="@color/colorSecondary"
+                app:menu="@menu/user_navigation_menu" />
+        </LinearLayout>
+        <Button
+            android:layout_marginTop="10dp"
+            android:paddingStart="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Personal Information"
+            android:textSize="24sp"
+            android:background="@color/white"
+            android:textAllCaps="false"
+            android:textAlignment="textStart"
+            android:textColor="@color/dark_gray"
+            >
 
+        </Button>
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:paddingStart="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="FeedBack"
+            android:textSize="24sp"
+            android:background="@color/white"
+            android:textAllCaps="false"
+            android:textAlignment="textStart"
+            android:textColor="@color/dark_gray"
+            >
+        </Button>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
