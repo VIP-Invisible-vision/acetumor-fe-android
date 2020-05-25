@@ -68,6 +68,7 @@ public class ForumFragment extends Fragment {
 
     private void createForumElements() {
         // get data from db
+        // dummy data here
         // loop through data
         // build list of elements
     }
