@@ -1,15 +1,27 @@
 package com.example.acetumor.fragments;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+
 import com.example.acetumor.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import static com.example.acetumor.util.Constants.MAPVIEW_BUNDLE_KEY;
 
@@ -24,6 +36,8 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
     private String mParam2;
     private MapView mMapView;
     GoogleMap map;
+    private FusedLocationProviderClient mFusedLocationClient;
+    private Location location = null;
 
     public CompassFragment() {
         // Required empty public constructor
@@ -45,6 +59,7 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +68,13 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        getLastKnownLocation();
         View view =  inflater.inflate(R.layout.fragment_compass, container, false);
         mMapView = (MapView) view.findViewById(R.id.map);
         initGoogleMap(savedInstanceState);
@@ -70,15 +88,30 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
 
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
-            System.out.println("here");
             mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
         }
-        System.out.println("again");
         mMapView.onCreate(mapViewBundle);
 
         mMapView.getMapAsync(this);
     }
+    /**
+     * get user last known location
+     */
+    private void getLastKnownLocation() {
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) return;
 
+        mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                if (task.isSuccessful()) {
+                    location = task.getResult();
+                }
+            }
+        });
+    }
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -96,12 +129,14 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
     public void onResume() {
         super.onResume();
         mMapView.onResume();
+        getLastKnownLocation();
     }
 
     @Override
     public void onStart() {
         super.onStart();
         mMapView.onStart();
+        getLastKnownLocation();
     }
 
     @Override
@@ -112,7 +147,12 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap map) {
-        map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        getLastKnownLocation();
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) return;
+        if (location != null) map.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())));
     }
 
     @Override
