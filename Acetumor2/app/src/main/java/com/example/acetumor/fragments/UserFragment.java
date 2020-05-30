@@ -1,10 +1,16 @@
 package com.example.acetumor.fragments;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.example.acetumor.UserFeedbackActivity;
+import com.example.acetumor.UserInfoActivity;
 import com.example.acetumor.R;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ForumFragment#newInstance} factory method to
@@ -50,6 +56,24 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
+        final Button setting = (Button)view.findViewById(R.id.user_info);
+        setting.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent settingIntent = new Intent(getContext(), UserInfoActivity.class);
+                startActivity(settingIntent);
+            }
+        });
+
+        Button feedback = (Button)view.findViewById(R.id.user_feedback);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingIntent = new Intent(getContext(), UserFeedbackActivity.class);
+                startActivity(settingIntent);
+            }
+        });
+        return view;
     }
+
 }

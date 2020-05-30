@@ -9,6 +9,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,7 +42,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            String message = intent.getStringExtra(UserInfoActivity.EXTRA_MESSAGE);
+            Log.d(TAG, "here");
+            assert message != null;
+//            if (message.equals("user")) {
+//                openFragment(UserFragment.newInstance("", ""));
+//            }
+        }
         openFragment(HomeFragment.newInstance("", ""));
+
     }
 
     public void openFragment(Fragment fragment) {
@@ -170,4 +183,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if (checkMapServices() && !mLocationPermissionGranted) getLocationPermission();
     }
+
+
 }
