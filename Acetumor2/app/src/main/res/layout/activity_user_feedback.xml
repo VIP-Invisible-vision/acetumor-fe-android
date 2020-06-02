@@ -21,30 +21,32 @@
 
     <EditText
         android:id="@+id/user_feedback_input"
-        android:layout_width="345dp"
-        android:layout_height="287dp"
+        android:layout_width="348dp"
+        android:layout_height="206dp"
         android:background="@null"
         android:inputType="textMultiLine"
+        android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317" />
+        app:layout_constraintVertical_bias="0.198" />
 
     <Button
         android:id="@+id/user_feedback_submit"
-        android:layout_width="347dp"
-        android:layout_height="71dp"
-        android:text="Submit"
-        android:textSize="26sp"
-        android:textColor="@color/white"
+        android:layout_width="345dp"
+        android:layout_height="60dp"
         android:background="@color/colorPrimary"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
+        app:layout_constraintVertical_bias="0.524" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
