@@ -1,18 +1,21 @@
 package com.example.acetumor;
-import android.Manifest;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.Button;
+=======
+import android.widget.ImageView;
+>>>>>>> fragment_home
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,10 +30,7 @@ import com.example.acetumor.fragments.CompassFragment;
 import com.example.acetumor.fragments.UserFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import static com.example.acetumor.util.Constants.ERROR_DIALOG_REQUEST;
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
         }
         openFragment(HomeFragment.newInstance("", ""));
-
     }
 
 
