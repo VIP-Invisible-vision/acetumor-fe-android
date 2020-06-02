@@ -14,12 +14,13 @@
             android:orientation="horizontal"
             >
             <Button
+                android:id="@+id/login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login/SignUp"
+                android:text="Login with\n Facebook"
                 android:paddingStart="20dp"
 
-                android:textSize="32sp"
+                android:textSize="28sp"
                 android:textColor="@color/black"
                 android:background="@color/cardColor"
                 android:layout_marginTop="100dp"
@@ -65,6 +66,7 @@
                 app:menu="@menu/user_navigation_menu" />
         </LinearLayout>
         <Button
+            android:id="@+id/user_info"
             android:layout_marginTop="10dp"
             android:paddingStart="15dp"
             android:layout_width="match_parent"
@@ -80,6 +82,7 @@
         </Button>
 
         <Button
+            android:id="@+id/user_feedback"
             android:layout_marginTop="10dp"
             android:paddingStart="15dp"
             android:layout_width="match_parent"
