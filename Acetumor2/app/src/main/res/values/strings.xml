@@ -10,4 +10,5 @@
     <string name="user_nav_result">My result</string>
     <string name="user_nav_questions">My Questions</string>
     <string name="user_nav_favorite">My Favorite</string>
+    <string name="back">Back</string>
 </resources>
