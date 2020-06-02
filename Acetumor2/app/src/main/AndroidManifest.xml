@@ -17,13 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
         <activity android:name=".TestImageActivity" />
         <activity android:name=".UserFeedbackActivity" />
         <activity android:name=".UserInfoActivity" />
-=======
         <activity android:label="@string/app_name" android:name=".TestImageActivity" />
->>>>>>> fragment_home
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

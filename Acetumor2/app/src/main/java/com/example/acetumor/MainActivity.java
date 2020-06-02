@@ -11,11 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-<<<<<<< HEAD
-import android.widget.Button;
-=======
-import android.widget.ImageView;
->>>>>>> fragment_home
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
