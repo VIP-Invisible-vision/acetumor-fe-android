@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 
 import com.example.acetumor.R;
-import com.example.acetumor.TestImageActivity;
+import com.example.acetumor.components.TestImageActivity;
 
 /**
  * A simple {@link Fragment} subclass.

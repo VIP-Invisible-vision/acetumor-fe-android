@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.acetumor">
 
     <uses-feature
@@ -17,10 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestImageActivity" />
-        <activity android:name=".UserFeedbackActivity" />
-        <activity android:name=".UserInfoActivity" />
-        <activity android:label="@string/app_name" android:name=".TestImageActivity" />
+        <activity android:name=".components.TestImageActivity" />
+        <activity android:name=".components.UserFeedbackActivity" />
+        <activity android:name=".components.UserInfoActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,96 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fragments.ForumFragment"
-    >
+    tools:context=".fragments.ForumFragment">
 
 
     <SearchView
         android:id="@+id/forum_search"
-        android:searchIcon="@drawable/ic_search"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="15dp"
-        android:background="@drawable/search_view_rounded" />
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/search_view_rounded"
+        android:searchIcon="@drawable/ic_search"
+        card_view:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent" />
 
     <!-- A CardView that contains a TextView -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="90dp"
-        android:background="@color/cardColor">
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@color/cardColor"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/forum_search">
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="top"
-            android:layout_marginHorizontal="7dp"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            card_view:cardCornerRadius="20dp"
+            android:layout_gravity="top"
+            android:layout_marginHorizontal="7dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/search_view_rounded"
 
             android:elevation="20dp"
-            android:background="@drawable/search_view_rounded">
-            <FrameLayout
+            card_view:cardCornerRadius="20dp">
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                >
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:backgroundTint="@color/cardColor"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hiewfhe fhref re dwefrw?"
+                    android:textSize="32sp"
+                    tools:ignore="HardcodedText" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/cardColor"
-                    android:orientation="vertical">
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_user"
+                        android:contentDescription="User icon"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="hiewfhe fhref re dwefrw?"
-                        android:textSize="32sp"
-                        >
-                    </TextView>
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="120dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="15dp">
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/ic_user"
-                            >
-                        </ImageView>
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_height="40dp"
-                            android:paddingStart="15dp"
-                            android:text="erhif fer te wrer ">
-
-                        </TextView>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="20dp"
-                        android:textSize="20sp"
-                        android:text="asdsd dwejwe fwed re erwrwe aed rwer fsdf ddw">
+                        android:paddingHorizontal="15dp"
+                        android:text="erhif fer te wrer "
+                        tools:ignore="HardcodedText">
 
                     </TextView>
-
-                    <RadioButton
-                        android:id="@+id/radioButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="340dp"
-                        />
-
                 </LinearLayout>
-            </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"
+                    android:text="asdsd dwejwe fwed re erwrwe aed rwer fsdf ddw"
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText">
+
+                </TextView>
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="340dp"
+                    />
+
+            </LinearLayout>
+
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

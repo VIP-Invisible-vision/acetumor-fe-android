@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.acetumor.UserFeedbackActivity;
-import com.example.acetumor.UserInfoActivity;
+import com.example.acetumor.components.UserFeedbackActivity;
+import com.example.acetumor.components.UserInfoActivity;
 import com.example.acetumor.R;
 
 /**
