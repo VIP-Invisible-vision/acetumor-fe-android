@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "here");
         // check map service
         if (checkMapServices() && !mLocationPermissionGranted) getLocationPermission();
 
