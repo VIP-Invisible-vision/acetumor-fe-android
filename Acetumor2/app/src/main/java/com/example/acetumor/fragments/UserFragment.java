@@ -15,7 +15,7 @@ import com.example.acetumor.components.UserFeedbackActivity;
 import com.example.acetumor.components.UserForumActivity;
 import com.example.acetumor.components.UserInfoActivity;
 import com.example.acetumor.R;
-import com.example.acetumor.components.UserPostActivity;
+import com.example.acetumor.components.UserArticleActivity;
 import com.example.acetumor.components.UserResultActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -60,8 +60,8 @@ public class UserFragment extends Fragment {
                         case R.id.user_nav_forum:
                             openFragment(UserForumActivity.class);
                             return true;
-                        case R.id.user_nav_post:
-                            openFragment(UserPostActivity.class);
+                        case R.id.user_nav_article:
+                            openFragment(UserArticleActivity.class);
                             return true;
                         case R.id.user_nav_result:
                             openFragment(UserResultActivity.class);

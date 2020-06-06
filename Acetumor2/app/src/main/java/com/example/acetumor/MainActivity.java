@@ -22,7 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.acetumor.components.UserFeedbackActivity;
 import com.example.acetumor.components.UserForumActivity;
 import com.example.acetumor.components.UserInfoActivity;
-import com.example.acetumor.components.UserPostActivity;
+import com.example.acetumor.components.UserArticleActivity;
 import com.example.acetumor.fragments.HomeFragment;
 import com.example.acetumor.fragments.ForumFragment;
 import com.example.acetumor.fragments.CompassFragment;
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             String userMessage = intent.getStringExtra(UserInfoActivity.EXTRA_MESSAGE);
             if (userMessage == null) userMessage = intent.getStringExtra(UserFeedbackActivity.EXTRA_MESSAGE);
             if (userMessage == null) userMessage = intent.getStringExtra(UserForumActivity.EXTRA_MESSAGE);
-            if (userMessage == null) userMessage = intent.getStringExtra(UserPostActivity.EXTRA_MESSAGE);
+            if (userMessage == null) userMessage = intent.getStringExtra(UserArticleActivity.EXTRA_MESSAGE);
             if (userMessage != null) {
                 bottomNavigation.setSelectedItemId(R.id.nav_user);
             }

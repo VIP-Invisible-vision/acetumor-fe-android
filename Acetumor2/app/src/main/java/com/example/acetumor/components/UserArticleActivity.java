@@ -10,14 +10,14 @@ import android.widget.Button;
 import com.example.acetumor.MainActivity;
 import com.example.acetumor.R;
 
-public class UserPostActivity extends AppCompatActivity {
+public class UserArticleActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "user";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_post);
+        setContentView(R.layout.activity_user_article);
 
-        Button back = findViewById(R.id.user_post_back);
+        Button back = findViewById(R.id.user_article_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

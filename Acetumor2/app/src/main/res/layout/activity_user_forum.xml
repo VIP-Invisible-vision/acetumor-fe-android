@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".components.UserForumActivity">
-    <include android:id="@+id/user_forum_back" layout="@layout/back_button"> </include>
+
+    <include
+        android:id="@+id/user_forum_back"
+        layout="@layout/back_button"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

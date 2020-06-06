@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".components.UserResultActivity"></activity>
         <activity android:name=".components.UserForumActivity" />
-        <activity android:name=".components.UserPostActivity" />
+        <activity android:name=".components.UserArticleActivity" />
         <activity android:name=".components.TestImageActivity" />
         <activity android:name=".components.UserFeedbackActivity" />
         <activity android:name=".components.UserInfoActivity" />

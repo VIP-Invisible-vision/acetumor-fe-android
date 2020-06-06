@@ -6,37 +6,49 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/cardColor"
             android:orientation="horizontal"
             >
+
             <Button
                 android:id="@+id/login"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login with\n Facebook"
-                android:paddingStart="20dp"
-
-                android:textSize="28sp"
-                android:textColor="@color/black"
-                android:background="@color/cardColor"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="100dp"
-                style="@style/Widget.AppCompat.Button.Borderless"/>
+
+                android:background="@color/cardColor"
+                android:text="Login using \nFacebook"
+                android:textAlignment="textStart"
+                android:textColor="@color/facebook_blue"
+                android:textSize="20sp"
+
+                />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/ic_facebook"
+                />
             <androidx.cardview.widget.CardView
                 android:layout_width="95dp"
                 android:layout_height="95dp"
                 app:cardCornerRadius="250dp"
                 android:layout_marginTop="80dp"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="80dp"
                 app:cardBackgroundColor="@color/white">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     app:cardCornerRadius="250dp"
+
                     android:layout_gravity="center">
 
                     <ImageView
@@ -68,31 +80,36 @@
         <Button
             android:id="@+id/user_info"
             android:layout_marginTop="10dp"
-            android:paddingStart="15dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Personal Information"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:background="@color/white"
             android:textAllCaps="false"
             android:textAlignment="textStart"
-            android:textColor="@color/dark_gray"
+            android:textColor="@color/black"
+            android:drawableEnd="@drawable/ic_right_arrow"
+
+            style="?android:attr/borderlessButtonStyle"
             >
 
         </Button>
 
         <Button
             android:id="@+id/user_feedback"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
-            android:paddingStart="15dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="FeedBack"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:background="@color/white"
             android:textAllCaps="false"
             android:textAlignment="textStart"
-            android:textColor="@color/dark_gray"
+            android:textColor="@color/black"
+            android:drawableEnd="@drawable/ic_right_arrow"
+            style="?android:attr/borderlessButtonStyle"
             >
         </Button>
     </LinearLayout>

@@ -7,21 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <SearchView
-        android:id="@+id/home_search"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="2dp"
-        android:background="@drawable/search_view_rounded"
-        android:searchIcon="@drawable/ic_search"
-        app:layout_constraintBottom_toTopOf="@+id/upload_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    <include android:id="@+id/home_search" layout="@layout/search_bar"/>
     <ImageView
         android:id="@+id/upload_image"
         android:layout_width="0dp"

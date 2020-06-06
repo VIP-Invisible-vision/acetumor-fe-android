@@ -5,7 +5,7 @@
         android:title="@string/user_nav_questions"
         android:icon="@drawable/ic_forum"/>
     <item
-        android:id="@+id/user_nav_post"
+        android:id="@+id/user_nav_article"
         android:title="@string/user_nav_favorite"
         android:icon="@drawable/ic_favorite"
         />
