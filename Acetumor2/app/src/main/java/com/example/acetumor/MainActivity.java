@@ -19,7 +19,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.acetumor.components.UserFeedbackActivity;
+import com.example.acetumor.components.UserForumActivity;
 import com.example.acetumor.components.UserInfoActivity;
+import com.example.acetumor.components.UserPostActivity;
 import com.example.acetumor.fragments.HomeFragment;
 import com.example.acetumor.fragments.ForumFragment;
 import com.example.acetumor.fragments.CompassFragment;
@@ -47,15 +50,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            String message = intent.getStringExtra(UserInfoActivity.EXTRA_MESSAGE);
-            Log.d(TAG, "here");
-            assert message != null;
-//            if (message.equals("user")) {
-//                openFragment(UserFragment.newInstance("", ""));
-//            }
-        }
         openFragment(HomeFragment.newInstance("", ""));
     }
 
@@ -88,6 +82,31 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "here");
+        // check map service
+        if (checkMapServices() && !mLocationPermissionGranted) getLocationPermission();
+
+        // check which fragment to show
+        Intent intent = getIntent();
+        if (intent != null) {
+            String userMessage = intent.getStringExtra(UserInfoActivity.EXTRA_MESSAGE);
+            if (userMessage == null) userMessage = intent.getStringExtra(UserFeedbackActivity.EXTRA_MESSAGE);
+            if (userMessage == null) userMessage = intent.getStringExtra(UserForumActivity.EXTRA_MESSAGE);
+            if (userMessage == null) userMessage = intent.getStringExtra(UserPostActivity.EXTRA_MESSAGE);
+            if (userMessage != null) {
+                bottomNavigation.setSelectedItemId(R.id.nav_user);
+            }
+        }
+    }
+
+
+
+
+    // Map functions
     private boolean checkMapServices(){
         if(isServicesOK()){
             return isMapsEnabled();
@@ -179,17 +198,9 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == PERMISSIONS_REQUEST_ENABLE_GPS) {
             if (!mLocationPermissionGranted) {
                 getLocationPermission();
-            } else {
             }
         }
 
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "here");
-        if (checkMapServices() && !mLocationPermissionGranted) getLocationPermission();
-    }
-
 
 }

@@ -10,25 +10,14 @@ import android.widget.Button;
 import com.example.acetumor.MainActivity;
 import com.example.acetumor.R;
 
-public class UserFeedbackActivity extends AppCompatActivity {
+public class UserPostActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "user";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_feedback);
+        setContentView(R.layout.activity_user_post);
 
-        Button submit = findViewById(R.id.user_feedback_submit);
-        Button back = findViewById(R.id.user_feedback_back);
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, "user");
-                startActivity(intent);
-            }
-        });
-
+        Button back = findViewById(R.id.user_post_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

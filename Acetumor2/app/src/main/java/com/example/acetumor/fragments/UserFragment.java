@@ -1,15 +1,23 @@
 package com.example.acetumor.fragments;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.acetumor.components.UserFeedbackActivity;
+import com.example.acetumor.components.UserForumActivity;
 import com.example.acetumor.components.UserInfoActivity;
 import com.example.acetumor.R;
+import com.example.acetumor.components.UserPostActivity;
+import com.example.acetumor.components.UserResultActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,9 +29,8 @@ public class UserFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
+    private BottomNavigationView userNavigationView;
     public UserFragment() {
         // Required empty public constructor
     }
@@ -44,19 +51,43 @@ public class UserFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+
+    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.user_nav_forum:
+                            openFragment(UserForumActivity.class);
+                            return true;
+                        case R.id.user_nav_post:
+                            openFragment(UserPostActivity.class);
+                            return true;
+                        case R.id.user_nav_result:
+                            openFragment(UserResultActivity.class);
+                            return true;
+                    }
+                    return false;
+                }
+            };
+
+    public void openFragment(Class fragment) {
+        Intent settingIntent = new Intent(getContext(), fragment);
+        startActivity(settingIntent);
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
+
+        // setting page
         final Button setting = (Button)view.findViewById(R.id.user_info);
         setting.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -65,6 +96,7 @@ public class UserFragment extends Fragment {
             }
         });
 
+        // feedback page
         Button feedback = (Button)view.findViewById(R.id.user_feedback);
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +105,9 @@ public class UserFragment extends Fragment {
                 startActivity(settingIntent);
             }
         });
+
+        userNavigationView = (BottomNavigationView) view.findViewById(R.id.user_navigation);
+        userNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
         return view;
     }
 
