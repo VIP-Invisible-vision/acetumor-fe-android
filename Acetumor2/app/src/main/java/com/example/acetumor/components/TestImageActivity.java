@@ -2,15 +2,21 @@ package com.example.acetumor.components;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.acetumor.MainActivity;
 import com.example.acetumor.R;
+import com.guoxiaoxing.phoenix.core.listener.ImageLoader;
+import com.guoxiaoxing.phoenix.picker.Phoenix;
 
 
 public class TestImageActivity extends AppCompatActivity {
@@ -30,6 +36,7 @@ public class TestImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_image);
 
         final Button back = (Button) findViewById(R.id.test_back);
+        final ImageButton camera = (ImageButton) findViewById(R.id.test_camera);
         breast = new TestImageButton((ImageButton) findViewById(R.id.test_choice_breast), true);
         brain = new TestImageButton((ImageButton) findViewById(R.id.test_choice_brain), false);
         lung = new TestImageButton((ImageButton) findViewById(R.id.test_choice_lung), false);
@@ -47,7 +54,6 @@ public class TestImageActivity extends AppCompatActivity {
         });
 
         // set image button bg color
-        Log.d(TAG, "Inside onClick1 if");
         for (int i=0; i < buttons.length; i++) {
             final int finalI = i;
             buttons[i].getBtn().setOnClickListener(new View.OnClickListener() {
@@ -57,6 +63,25 @@ public class TestImageActivity extends AppCompatActivity {
                 }
             });
         }
+
+//        camera.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dispatchTakePictureIntent();
+//            }
+//        });
+
+
+    }
+
+    // take photos
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    private void dispatchTakePictureIntent() {
+//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//        }
     }
 
     public void setSelected(TestImageButton selected) {

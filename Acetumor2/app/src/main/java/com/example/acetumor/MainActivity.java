@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,11 +32,12 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.guoxiaoxing.phoenix.core.listener.ImageLoader;
+import com.guoxiaoxing.phoenix.picker.Phoenix;
 
 import static com.example.acetumor.util.Constants.ERROR_DIALOG_REQUEST;
 import static com.example.acetumor.util.Constants.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION;
 import static com.example.acetumor.util.Constants.PERMISSIONS_REQUEST_ENABLE_GPS;
-
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -49,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-
-        openFragment(HomeFragment.newInstance("", ""));
+        bottomNavigation.setSelectedItemId(R.id.nav_home);
     }
 
 
@@ -98,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
             if (userMessage == null) userMessage = intent.getStringExtra(UserArticleActivity.EXTRA_MESSAGE);
             if (userMessage != null) {
                 bottomNavigation.setSelectedItemId(R.id.nav_user);
+            }
+            else {
+                bottomNavigation.setSelectedItemId(R.id.nav_home);
             }
         }
     }
