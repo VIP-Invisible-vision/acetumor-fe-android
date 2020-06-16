@@ -32,8 +32,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.guoxiaoxing.phoenix.core.listener.ImageLoader;
-import com.guoxiaoxing.phoenix.picker.Phoenix;
 
 import static com.example.acetumor.util.Constants.ERROR_DIALOG_REQUEST;
 import static com.example.acetumor.util.Constants.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION;
