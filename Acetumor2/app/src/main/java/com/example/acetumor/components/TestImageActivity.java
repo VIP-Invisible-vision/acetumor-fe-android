@@ -41,6 +41,7 @@ public class TestImageActivity extends AppCompatActivity{
 
         final Button back = (Button) findViewById(R.id.test_back);
         final ImageButton camera = (ImageButton) findViewById(R.id.test_camera);
+        final ImageButton gallery = (ImageButton) findViewById(R.id.test_photo);
         TestImageButton breast = new TestImageButton((ImageButton) findViewById(R.id.test_choice_breast), true);
         TestImageButton brain = new TestImageButton((ImageButton) findViewById(R.id.test_choice_brain), false);
         TestImageButton lung = new TestImageButton((ImageButton) findViewById(R.id.test_choice_lung), false);
@@ -72,6 +73,14 @@ public class TestImageActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), TakePhotoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), UploadPhotoActivity.class);
                 startActivity(intent);
             }
         });

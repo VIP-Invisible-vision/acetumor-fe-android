@@ -45,8 +45,8 @@ public class CustomHelper {
 
 //                takePhoto.onPickMultipleWithCrop(limit, getCropOptions()); //crop or not
 
-//
-//                takePhoto.onPickFromGallery();
+                //Log.d("msg", "!!!!!!!");
+                takePhoto.onPickFromGallery();
 
                 break;
             case R.id.test_camera:
