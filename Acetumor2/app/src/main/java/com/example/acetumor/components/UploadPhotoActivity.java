@@ -29,25 +29,4 @@ public class UploadPhotoActivity extends org.devio.takephoto.app.TakePhotoActivi
 //        startActivity(new Intent(this, TestImageActivity.class));
     }
 
-    @Override
-    public void takeCancel() {
-        super.takeCancel();
-    }
-
-    @Override
-    public void takeFail(TResult result, String msg) {
-        super.takeFail(result, msg);
-    }
-
-    @Override
-    public void takeSuccess(TResult result) {
-        super.takeSuccess(result);
-        showImg(result.getImages());
-    }
-
-    private void showImg(ArrayList<TImage> images) {
-        Intent intent = new Intent(this, ResultActivity.class);
-        intent.putExtra("images", images);
-        startActivity(intent);
-    }
 }
