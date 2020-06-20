@@ -20,7 +20,7 @@ public class UploadPhotoActivity extends org.devio.takephoto.app.TakePhotoActivi
         super.onCreate(savedInstanceState);
         CustomHelper customHelper = new CustomHelper(findViewById(R.id.activity_test_image));
         customHelper.onClick(R.id.test_photo, getTakePhoto());
-        setContentView(R.layout.activity_take_photo);
+//        setContentView(R.layout.activity_test_image);
     }
 
     @Override

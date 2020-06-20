@@ -10,4 +10,9 @@
     <string name="user_nav_questions">My Questions</string>
     <string name="user_nav_favorite">My Favorite</string>
     <string name="back">Back</string>
+    <string name="album_view">Select Album</string>
+    <string name="image_view">Select Image</string>
+    <string name="add">Confirm</string>
+    <string name="selected">Selected</string>
+    <string name="limit_exceeded">Maximum %d image selected</string>
 </resources>
