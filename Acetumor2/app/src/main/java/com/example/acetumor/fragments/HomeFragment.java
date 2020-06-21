@@ -87,10 +87,4 @@ public class HomeFragment extends Fragment {
         return currView;
     }
 
-//    @Override
-//    public void onBackPressedCallBack() {
-//
-//
-//
-//    }
 }
