@@ -50,8 +50,10 @@ public class CustomHelper {
 
                 break;
             case R.id.test_camera:
-                Log.d("msg", "CustomHelper_line_79");
-                takePhoto.onPickFromCapture(imageUri);
+                Log.d("msg", "CustomHelper_line_53");
+                takePhoto.onPickFromCaptureWithCrop(imageUri, getCropOptions());
+                Log.d("msg", imageUri.toString());
+
                 break;
             default:
                 break;
@@ -62,6 +64,7 @@ public class CustomHelper {
         TakePhotoOptions.Builder builder = new TakePhotoOptions.Builder();
 
         builder.setWithOwnGallery(true);
+        builder.setCorrectImage(true);
 
         takePhoto.setTakePhotoOptions(builder.create());
 

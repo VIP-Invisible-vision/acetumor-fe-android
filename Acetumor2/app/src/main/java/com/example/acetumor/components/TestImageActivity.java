@@ -17,6 +17,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.acetumor.MainActivity;
 import com.example.acetumor.R;
 
@@ -107,6 +113,5 @@ public class TestImageActivity extends AppCompatActivity{
             this.selected.getBtn().setBackground(getDrawable(R.drawable.round_button_selected));
         }
     }
-
 
 }

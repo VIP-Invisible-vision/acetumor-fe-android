@@ -15,4 +15,7 @@
     <string name="add">Confirm</string>
     <string name="selected">Selected</string>
     <string name="limit_exceeded">Maximum %d image selected</string>
+    <string name="flash_auto">Flash auto</string>
+    <string name="flash_off">Flash off</string>
+    <string name="flash_on">Flash on</string>
 </resources>
