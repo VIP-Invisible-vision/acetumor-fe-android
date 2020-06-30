@@ -40,12 +40,9 @@ public class CustomHelper {
         configTakePhotoOption(takePhoto);
         switch (id) {
             case R.id.test_photo:
-                int limit = 5; // maximum number of photos
-
-
+//                int limit = 5; // maximum number of photos
 //                takePhoto.onPickMultipleWithCrop(limit, getCropOptions()); //crop or not
 
-                //Log.d("msg", "!!!!!!!");
                 takePhoto.onPickFromGallery();
 
                 break;
