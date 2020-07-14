@@ -12,8 +12,10 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -53,6 +55,8 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import static com.example.acetumor.util.Constants.PERMISSIONS_REQUEST_ENABLE_GPS;
 
 public class TakePhotoActivity extends AppCompatActivity implements
         ActivityCompat.OnRequestPermissionsResultCallback,
@@ -246,7 +250,7 @@ public class TakePhotoActivity extends AppCompatActivity implements
         @Override
         public void onPictureTaken(CameraView cameraView, final byte[] data) {
             Log.d(TAG, "onPictureTaken " + data.length);
-            Toast.makeText(cameraView.getContext(), "picture_taken", Toast.LENGTH_SHORT)
+            Toast.makeText(cameraView.getContext(), "picture taken", Toast.LENGTH_SHORT)
                     .show();
             getBackgroundHandler().post(new Runnable() {
                 @Override
@@ -336,35 +340,12 @@ public class TakePhotoActivity extends AppCompatActivity implements
         }
 
     }
-//    public void get() {
-//        // Instantiate the RequestQueue.
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        String url ="http://192.168.1.103:3000/api/forum/t/all";
-//
-//        // Request a string response from the provided URL.
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        // Display the first 500 characters of the response string.
-//                        Log.d("msg", "Response is: "+ response.substring(0,5));
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.d("msg", "That didn't work!");
-//                Log.d("msg", error.getMessage());
-//            }
-//        });
-//
-//        // Add the request to the RequestQueue.
-//        queue.add(stringRequest);
-//    }
 
     private static String encodeFileToBase64Binary(File file) throws Exception{
         FileInputStream fileInputStreamReader = new FileInputStream(file);
         byte[] bytes = new byte[(int)file.length()];
         fileInputStreamReader.read(bytes);
+        Log.d("msg", Integer.toString(bytes.length));
         return new String(Base64.encodeToString(bytes, Base64.DEFAULT));
     }
 
@@ -372,9 +353,11 @@ public class TakePhotoActivity extends AppCompatActivity implements
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://192.168.1.103:3000/api/test";
+//        String url ="http://192.168.0.254:3000/api/test";
+        String url = "http://www.minqz2009.com/api/upload-img";
         final String fileEncode = encodeFileToBase64Binary(file);
-        Log.d("msg", fileEncode);
+//        Log.d("msg", fileEncode);
+        final Activity thisActivity = this;
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -382,6 +365,8 @@ public class TakePhotoActivity extends AppCompatActivity implements
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.d("msg", "Response is: "+ response);
+                        Intent result = new Intent(thisActivity, TestResultActivity.class);
+                        startActivity(result);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -396,8 +381,7 @@ public class TakePhotoActivity extends AppCompatActivity implements
                 byte[] body = new byte[0];
                 JSONObject object = new JSONObject();
                 try {
-                    object.put("img", "11243534");
-                    object.put("cat", fileEncode);
+                    object.put("img", fileEncode);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -416,7 +400,7 @@ public class TakePhotoActivity extends AppCompatActivity implements
             }
         };
 
-        // Add the request to the RequestQueue.
+        // Add the request to the RequestQueue.x
         queue.add(stringRequest);
         stringRequest.setRetryPolicy(new RetryPolicy() {
             @Override

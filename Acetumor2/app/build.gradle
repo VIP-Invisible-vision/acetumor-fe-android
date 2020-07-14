@@ -26,7 +26,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.firebase:firebase-analytics:17.4.3'
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
     //noinspection GradleCompatible
     implementation 'com.android.support:cardview-v7:23.3.1'
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -36,8 +36,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'androidx.navigation:navigation-fragment:2.2.2'
-    implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
 
     //map
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
@@ -49,6 +49,9 @@ dependencies {
 
     //cameraview
     implementation 'com.github.google:cameraview:68947cc164'
+
+    //pie chart
+    implementation 'com.github.luweibin3118:PieChartView:v1.1.2'
 
 }
 apply plugin: 'com.google.gms.google-services'

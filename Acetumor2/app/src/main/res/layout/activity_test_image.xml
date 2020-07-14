@@ -9,6 +9,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/gradient_bg"
@@ -43,14 +44,13 @@
         android:id="@+id/test_choice_breast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:background="@drawable/round_button_selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test_choice_eye"
-        app:layout_constraintVertical_bias="0.003"
+        app:layout_constraintVertical_bias="0.143"
         app:srcCompat="@drawable/ic_breast" />
 
     <ImageButton
@@ -90,28 +90,28 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="45dp"
         android:layout_marginEnd="75dp"
-        android:layout_marginBottom="252dp"
         android:background="@drawable/round_button"
         android:contentDescription="Stomach"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/test_choice_breast"
-        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test_choice_brain"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_stomach" />
 
     <ImageButton
         android:id="@+id/test_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93"
-        app:srcCompat="@drawable/ic_camera1"
-        android:background="@drawable/round_button"/>
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_camera1" />
 
     <ImageButton
         android:id="@+id/test_photo"
@@ -137,13 +137,14 @@
         android:layout_marginStart="75dp"
         android:layout_marginTop="45dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="254dp"
+        android:background="@drawable/round_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toEndOf="@+id/test_choice_breast"
         app:layout_constraintTop_toBottomOf="@+id/test_choice_lung"
-        app:srcCompat="@drawable/ic_dots"
-        android:background="@drawable/round_button"/>
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_dots" />
 
     <TextView
         android:id="@+id/textView4"
