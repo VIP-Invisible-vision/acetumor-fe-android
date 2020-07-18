@@ -67,7 +67,10 @@ public class TakePhotoActivity extends AppCompatActivity implements
     private static final int REQUEST_CAMERA_PERMISSION = 1;
 
     private static final String FRAGMENT_DIALOG = "dialog";
-
+    public static int b;
+    public static int i;
+    public static int iv;
+    public static int n;
     private static final int[] FLASH_OPTIONS = {
             CameraView.FLASH_AUTO,
             CameraView.FLASH_OFF,
@@ -363,10 +366,23 @@ public class TakePhotoActivity extends AppCompatActivity implements
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
                         Log.d("msg", "Response is: "+ response);
-                        Intent result = new Intent(thisActivity, TestResultActivity.class);
-                        startActivity(result);
+                        try {
+                            JSONObject json = new JSONObject(response);
+                            int b = json.getInt("b");
+                            int i = json.getInt("i");
+                            int iv = json.getInt("iv");
+                            int n = json.getInt("n");
+                            Intent result = new Intent(thisActivity, TestResultActivity.class);
+                            result.putExtra("b", b);
+                            result.putExtra("i", i);
+                            result.putExtra("iv", iv);
+                            result.putExtra("n", n);
+                            startActivity(result);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }, new Response.ErrorListener() {
             @Override
