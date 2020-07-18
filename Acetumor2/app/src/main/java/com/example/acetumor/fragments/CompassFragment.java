@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -17,6 +19,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -61,7 +64,7 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -102,16 +105,31 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
                 != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) return;
-
-        mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+        final Task location = mFusedLocationClient.getLastLocation();
+        location.addOnCompleteListener(new OnCompleteListener<Location>() {
             @Override
-            public void onComplete(@NonNull Task<Location> task) {
+            public void onComplete(@NonNull Task task) {
                 if (task.isSuccessful()) {
-                    location = task.getResult();
+                    Location currentlocation = (Location)task.getResult();
+                    moveCamera(new LatLng(currentlocation.getLatitude(), currentlocation.getLongitude()),
+                            15f);
+                }
+                else{
+                    Toast.makeText(getActivity(),"unable to get location", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
+    private void moveCamera(LatLng latLng, float zoom){
+        if(map == null){
+            this.onStart();
+        }
+        else {
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        }
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -146,13 +164,16 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(GoogleMap map) {
+    public void onMapReady(GoogleMap gmap) {
+        map = gmap;
         getLastKnownLocation();
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) return;
         if (location != null) map.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())));
+        map.setMyLocationEnabled(true);
+        map.getUiSettings().setMyLocationButtonEnabled(false);
     }
 
     @Override
