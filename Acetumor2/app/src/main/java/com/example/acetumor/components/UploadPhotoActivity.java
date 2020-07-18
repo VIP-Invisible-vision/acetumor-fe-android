@@ -71,20 +71,30 @@ public class UploadPhotoActivity extends org.devio.takephoto.app.TakePhotoActivi
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-//        String url ="http://192.168.0.254:3000/api/test";
         String url = "http://www.minqz2009.com/api/upload-img";
         final String fileEncode = encodeFileToBase64Binary(file);
-//        Log.d("msg", fileEncode);
         final Activity thisActivity = this;
-        // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.d("msg", "Response is: "+ response);
-                        Intent result = new Intent(thisActivity, TestResultActivity.class);
-                        thisActivity.startActivity(result);
+                        try {
+                            JSONObject json = new JSONObject(response);
+                            int b = json.getInt("b");
+                            int i = json.getInt("i");
+                            int iv = json.getInt("iv");
+                            int n = json.getInt("n");
+                            Intent result = new Intent(thisActivity, TestResultActivity.class);
+                            result.putExtra("b", b);
+                            result.putExtra("i", i);
+                            result.putExtra("iv", iv);
+                            result.putExtra("n", n);
+                            startActivity(result);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
