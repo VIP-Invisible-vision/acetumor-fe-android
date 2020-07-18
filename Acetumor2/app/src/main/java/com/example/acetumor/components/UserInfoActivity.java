@@ -15,6 +15,7 @@ import com.example.acetumor.fragments.UserFragment;
 public class UserInfoActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "user";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class UserInfoActivity extends AppCompatActivity {
             }
         });
 
+        // submit user information to backend
         Button userInfoDone = findViewById(R.id.user_info_done);
         userInfoDone.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.acetumor.components.LoginActivity;
 import com.example.acetumor.components.UserFeedbackActivity;
 import com.example.acetumor.components.UserForumActivity;
 import com.example.acetumor.components.UserInfoActivity;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     BottomNavigationView bottomNavigation;
     private boolean mLocationPermissionGranted = false;
+    private boolean login = false;
 
 
     @Override
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                             openFragment(ForumFragment.newInstance("", ""));
                             return true;
                         case R.id.nav_user:
-                            openFragment(UserFragment.newInstance("", ""));
+                            openFragment(UserFragment.newInstance("login", ""));
                             return true;
                     }
                     return false;
@@ -91,10 +93,9 @@ public class MainActivity extends AppCompatActivity {
         // check which fragment to show
         Intent intent = getIntent();
         if (intent != null) {
-            String userMessage = intent.getStringExtra(UserInfoActivity.EXTRA_MESSAGE);
-            if (userMessage == null) userMessage = intent.getStringExtra(UserFeedbackActivity.EXTRA_MESSAGE);
-            if (userMessage == null) userMessage = intent.getStringExtra(UserForumActivity.EXTRA_MESSAGE);
-            if (userMessage == null) userMessage = intent.getStringExtra(UserArticleActivity.EXTRA_MESSAGE);
+            String userMessage = intent.getStringExtra("user");
+            Boolean login = intent.getBooleanExtra("login", false);
+            this.login = login;
             if (userMessage != null) {
                 bottomNavigation.setSelectedItemId(R.id.nav_user);
             }
