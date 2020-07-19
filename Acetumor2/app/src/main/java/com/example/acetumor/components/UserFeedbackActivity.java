@@ -25,6 +25,7 @@ public class UserFeedbackActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, "user");
+                intent.putExtra("login", true);
                 startActivity(intent);
             }
         });
@@ -34,6 +35,7 @@ public class UserFeedbackActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, "user");
+                intent.putExtra("login", true);
                 startActivity(intent);
             }
         });

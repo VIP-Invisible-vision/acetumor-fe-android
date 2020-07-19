@@ -1,5 +1,6 @@
 package com.example.acetumor;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -10,7 +11,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,10 +20,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.acetumor.components.UserFeedbackActivity;
-import com.example.acetumor.components.UserForumActivity;
-import com.example.acetumor.components.UserInfoActivity;
-import com.example.acetumor.components.UserArticleActivity;
 import com.example.acetumor.fragments.HomeFragment;
 import com.example.acetumor.fragments.ForumFragment;
 import com.example.acetumor.fragments.CompassFragment;
@@ -40,7 +36,9 @@ import static com.example.acetumor.util.Constants.PERMISSIONS_REQUEST_ENABLE_GPS
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     BottomNavigationView bottomNavigation;
+    private String username;
     private boolean mLocationPermissionGranted = false;
+    public boolean login = false;
 
 
     @Override
@@ -74,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             openFragment(ForumFragment.newInstance("", ""));
                             return true;
                         case R.id.nav_user:
-                            openFragment(UserFragment.newInstance("", ""));
+                            openFragment(UserFragment.newInstance(login, username));
                             return true;
                     }
                     return false;
@@ -89,12 +87,13 @@ public class MainActivity extends AppCompatActivity {
         if (checkMapServices() && !mLocationPermissionGranted) getLocationPermission();
 
         // check which fragment to show
+        Activity curr = this;
         Intent intent = getIntent();
         if (intent != null) {
-            String userMessage = intent.getStringExtra(UserInfoActivity.EXTRA_MESSAGE);
-            if (userMessage == null) userMessage = intent.getStringExtra(UserFeedbackActivity.EXTRA_MESSAGE);
-            if (userMessage == null) userMessage = intent.getStringExtra(UserForumActivity.EXTRA_MESSAGE);
-            if (userMessage == null) userMessage = intent.getStringExtra(UserArticleActivity.EXTRA_MESSAGE);
+            String userMessage = intent.getStringExtra("user");
+            Boolean newLogin = intent.getBooleanExtra("login", false);
+            username = intent.getStringExtra("username");
+            login = newLogin;
             if (userMessage != null) {
                 bottomNavigation.setSelectedItemId(R.id.nav_user);
             }

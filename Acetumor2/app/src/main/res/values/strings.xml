@@ -18,4 +18,9 @@
     <string name="flash_auto">Flash auto</string>
     <string name="flash_off">Flash off</string>
     <string name="flash_on">Flash on</string>
+    <string name="facebook_app_id">[APP_ID]</string>
+    <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+    <string name="update_password">Update password</string>
+    <string name="update_username">Update Your Username</string>
+    <string name="done">Done</string>
 </resources>

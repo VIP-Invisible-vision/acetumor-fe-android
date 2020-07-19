@@ -23,6 +23,7 @@ public class UserArticleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, "user");
+                intent.putExtra("login", true);
                 startActivity(intent);
             }
         });

@@ -24,18 +24,21 @@
                 android:layout_marginTop="100dp"
 
                 android:background="@color/cardColor"
-                android:text="Login using \nFacebook"
+                android:text="Login"
                 android:textAlignment="textStart"
                 android:textColor="@color/facebook_blue"
                 android:textSize="20sp"
 
                 />
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+
+            <Button
+                android:id="@+id/user_signup"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="100dp"
-                android:src="@drawable/ic_facebook"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SignUp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

@@ -4,13 +4,12 @@
     package="com.example.acetumor">
 
     <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="true" />
-    <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -26,7 +25,9 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="q">
+        tools:targetApi="m">
+        <activity android:name=".components.SignUpActivity"></activity>
+        <activity android:name=".components.LoginActivity" />
         <activity android:name=".components.TestResultActivity" />
         <activity android:name=".components.TakePhotoActivity" />
         <activity android:name=".components.UploadPhotoActivity" />
