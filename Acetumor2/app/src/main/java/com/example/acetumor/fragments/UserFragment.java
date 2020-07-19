@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.acetumor.components.LoginActivity;
+import com.example.acetumor.components.SignUpActivity;
 import com.example.acetumor.components.UserFeedbackActivity;
 import com.example.acetumor.components.UserForumActivity;
 import com.example.acetumor.components.UserInfoActivity;
@@ -23,16 +24,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class UserFragment extends Fragment {
     private Boolean loginStatus;
+    private String username;
     private BottomNavigationView userNavigationView;
 
     public UserFragment() {
         this.loginStatus = false;
     }
-    public UserFragment(Boolean login){
+    public UserFragment(Boolean login, String user){
         this.loginStatus = login;
+        this.username = user;
     }
-    public static UserFragment newInstance(String param1, String param2) {
-        UserFragment fragment = new UserFragment();
+    public static UserFragment newInstance(Boolean param1, String param2) {
+        UserFragment fragment = new UserFragment(param1, param2);
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -73,12 +76,14 @@ public class UserFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
 
+
         // setting page
         final Button setting = (Button)view.findViewById(R.id.user_info);
         setting.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (loginStatus) {
                     Intent settingIntent = new Intent(getContext(), UserInfoActivity.class);
+                    settingIntent.putExtra("username", username);
                     startActivity(settingIntent);
                 } else {
                     Toast.makeText(getContext(), "Please Login", Toast.LENGTH_SHORT).show();
@@ -112,6 +117,24 @@ public class UserFragment extends Fragment {
             }
         });
 
+        // signup page
+        Button signup = (Button)view.findViewById(R.id.user_signup);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!loginStatus) {
+                    Intent settingIntent = new Intent(getContext(), SignUpActivity.class);
+                    startActivity(settingIntent);
+                }
+            }
+        });
+
+        if (loginStatus) {
+            login.setVisibility(view.INVISIBLE);
+            signup.setVisibility(view.INVISIBLE);
+        } else {
+            view.findViewById(R.id.user_navigation).setVisibility(view.INVISIBLE);
+        }
         userNavigationView = (BottomNavigationView) view.findViewById(R.id.user_navigation);
         userNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
         return view;

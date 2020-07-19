@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-    <include android:id="@+id/login_back" layout="@layout/back_button"/>
+    android:layout_height="match_parent"
+    tools:context=".components.SignUpActivity">
+    <include android:id="@+id/signup_back" layout="@layout/back_button"/>
 
     <EditText
-        android:id="@+id/login_username"
+        android:id="@+id/signup_username"
         android:layout_width="353dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -23,19 +22,19 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <Button
-        android:id="@+id/login_submit"
+        android:id="@+id/signup_submit"
         android:layout_width="353dp"
         android:layout_height="56dp"
-        android:text="Login"
+        android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <EditText
-        android:id="@+id/login_password_1"
+        android:id="@+id/signup_password_1"
         android:layout_width="353dp"
         android:layout_height="59dp"
         android:ems="10"
@@ -47,5 +46,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
+
+    <EditText
+        android:id="@+id/signup_password_2"
+        android:layout_width="353dp"
+        android:layout_height="59dp"
+        android:ems="10"
+        android:hint="Type password again"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:autofillHints="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
