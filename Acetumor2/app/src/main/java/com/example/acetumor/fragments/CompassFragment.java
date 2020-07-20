@@ -1,12 +1,18 @@
 package com.example.acetumor.fragments;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +21,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.acetumor.R;
+import com.example.acetumor.components.GetNearbyPlaces;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +32,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.io.IOException;
+import java.util.List;
 
 import static com.example.acetumor.util.Constants.MAPVIEW_BUNDLE_KEY;
 
@@ -39,8 +49,10 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
     private String mParam2;
     private MapView mMapView;
     GoogleMap map;
+    int PROXIMITY_RADIUS = 10000;
     private FusedLocationProviderClient mFusedLocationClient;
     private Location location = null;
+    double latitude,longitude;
 
     public CompassFragment() {
         // Required empty public constructor
@@ -80,6 +92,25 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
         getLastKnownLocation();
         View view =  inflater.inflate(R.layout.fragment_compass, container, false);
         mMapView = (MapView) view.findViewById(R.id.map);
+        final Button hbutton = (Button)view.findViewById(R.id.B_Hospital);
+        hbutton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Object dataTransfer[] = new Object[2];
+                //first object will be mMap , scnd will be url
+
+                GetNearbyPlaces getNearbyPlacesData = new GetNearbyPlaces();
+                if (v.getId() == R.id.B_Hospital) {
+                    String hospital = "hospital";
+                    String url = getUrl(latitude, longitude, hospital);
+
+
+                    dataTransfer[0] = map;
+                    dataTransfer[1] = url;
+
+                    getNearbyPlacesData.execute(dataTransfer);
+                }
+            }
+        });
         initGoogleMap(savedInstanceState);
         return view;
     }
@@ -111,6 +142,8 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
             public void onComplete(@NonNull Task task) {
                 if (task.isSuccessful()) {
                     Location currentlocation = (Location)task.getResult();
+                    latitude = currentlocation.getLatitude();
+                    longitude = currentlocation.getLongitude();
                     moveCamera(new LatLng(currentlocation.getLatitude(), currentlocation.getLongitude()),
                             15f);
                 }
@@ -174,6 +207,18 @@ public class CompassFragment extends Fragment implements OnMapReadyCallback {
         if (location != null) map.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())));
         map.setMyLocationEnabled(true);
         map.getUiSettings().setMyLocationButtonEnabled(false);
+    }
+
+    private String getUrl(double latitude , double longitude , String nearbyPlace)
+    {
+        StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+        googlePlaceUrl.append("location"+"="+latitude+","+longitude);
+        googlePlaceUrl.append("&radius="+PROXIMITY_RADIUS);
+        googlePlaceUrl.append("&type="+nearbyPlace);
+        googlePlaceUrl.append("&sensor=true");
+        googlePlaceUrl.append("&key="+"AIzaSyB7wgG-4YvZm_i2aoAeUTIU2ACxl6PvrN8");
+
+        return googlePlaceUrl.toString();
     }
 
     @Override
