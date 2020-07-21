@@ -41,10 +41,8 @@ public class TestImageActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.wtf("msg", "here1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_image);
-
         final Button back = (Button) findViewById(R.id.test_back);
         final ImageButton camera = (ImageButton) findViewById(R.id.test_camera);
         final ImageButton gallery = (ImageButton) findViewById(R.id.test_photo);
@@ -79,6 +77,7 @@ public class TestImageActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), TakePhotoActivity.class);
+                intent.putExtra("type", selected.getBtn().getId());
                 startActivity(intent);
             }
         });
@@ -87,6 +86,7 @@ public class TestImageActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), UploadPhotoActivity.class);
+                intent.putExtra("type", selected.getBtn().getId());
                 startActivity(intent);
             }
         });

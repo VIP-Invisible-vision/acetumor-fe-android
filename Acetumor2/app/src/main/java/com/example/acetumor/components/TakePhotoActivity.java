@@ -71,6 +71,8 @@ public class TakePhotoActivity extends AppCompatActivity implements
     public static int i;
     public static int iv;
     public static int n;
+
+    public static int type;
     private static final int[] FLASH_OPTIONS = {
             CameraView.FLASH_AUTO,
             CameraView.FLASH_OFF,
@@ -113,6 +115,8 @@ public class TakePhotoActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_photo);
         mCameraView = findViewById(R.id.camera);
+        Intent intent = getIntent();
+        type = intent.getIntExtra("type", R.id.test_choice_breast);
         if (mCameraView != null) {
             mCameraView.addCallback(mCallback);
         }
@@ -356,7 +360,6 @@ public class TakePhotoActivity extends AppCompatActivity implements
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-//        String url ="http://192.168.0.254:3000/api/test";
         String url = "http://www.minqz2009.com/api/upload-img";
         final String fileEncode = encodeFileToBase64Binary(file);
 //        Log.d("msg", fileEncode);
@@ -369,15 +372,9 @@ public class TakePhotoActivity extends AppCompatActivity implements
                         Log.d("msg", "Response is: "+ response);
                         try {
                             JSONObject json = new JSONObject(response);
-                            int b = json.getInt("b");
-                            int i = json.getInt("i");
-                            int iv = json.getInt("iv");
-                            int n = json.getInt("n");
+                            JSONObject res = json.getJSONObject("distribution");
                             Intent result = new Intent(thisActivity, TestResultActivity.class);
-                            result.putExtra("b", b);
-                            result.putExtra("i", i);
-                            result.putExtra("iv", iv);
-                            result.putExtra("n", n);
+                            putExtraInfo(result, type, res);
                             startActivity(result);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -397,6 +394,7 @@ public class TakePhotoActivity extends AppCompatActivity implements
                 byte[] body = new byte[0];
                 JSONObject object = new JSONObject();
                 try {
+                    object.put("position", getTypeName(type));
                     object.put("img", fileEncode);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -436,5 +434,42 @@ public class TakePhotoActivity extends AppCompatActivity implements
         });
     }
 
+    public String getTypeName (int id) {
+        if (id == R.id.test_choice_brain) return "Brain";
+        if (id == R.id.test_choice_breast) return "Breast";
+        if (id == R.id.test_choice_lung) return "Chest";
+        return "Breast";
+    }
 
+    public void putExtraInfo(Intent result, int id, JSONObject res) throws JSONException {
+        if (id == R.id.test_choice_brain) {
+            int glioma = res.getInt("glioma");
+            int meningioma = res.getInt("meningioma");
+            int normal = res.getInt("normal");
+            int pituitary = res.getInt("pituitary");
+            result.putExtra("glioma", glioma);
+            result.putExtra("meningioma", meningioma);
+            result.putExtra("normal", normal);
+            result.putExtra("pituitary", pituitary);
+        }
+        else if (id == R.id.test_choice_breast) {
+            int b = res.getInt("benign");
+            int i = res.getInt("insitu");
+            int iv = res.getInt("invasive");
+            int n = res.getInt("normal");
+            result.putExtra("benign", b);
+            result.putExtra("insitu", i);
+            result.putExtra("invasive", iv);
+            result.putExtra("normal", n);
+        }
+        else if (id == R.id.test_choice_lung) {
+            int covid = res.getInt("covid");
+            int viral = res.getInt("viral");
+            int normal = res.getInt("normal");
+            result.putExtra("covid", covid);
+            result.putExtra("viral", viral);
+            result.putExtra("normal", normal);
+        }
+        result.putExtra("type", type);
+    }
 }
