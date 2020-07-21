@@ -33,10 +33,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 public class UploadPhotoActivity extends org.devio.takephoto.app.TakePhotoActivity {
-
+    private int type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        type = intent.getIntExtra("type", R.id.test_choice_breast);
         CustomHelper customHelper = new CustomHelper(findViewById(R.id.activity_test_image));
         customHelper.onClick(R.id.test_photo, getTakePhoto());
 //        setContentView(R.layout.activity_test_image);
@@ -87,15 +89,10 @@ public class UploadPhotoActivity extends org.devio.takephoto.app.TakePhotoActivi
                         Log.d("msg", "Response is: "+ response);
                         try {
                             JSONObject json = new JSONObject(response);
-                            int b = json.getInt("b");
-                            int i = json.getInt("i");
-                            int iv = json.getInt("iv");
-                            int n = json.getInt("n");
+                            JSONObject res = json.getJSONObject("distribution");
                             Intent result = new Intent(thisActivity, TestResultActivity.class);
-                            result.putExtra("b", b);
-                            result.putExtra("i", i);
-                            result.putExtra("iv", iv);
-                            result.putExtra("n", n);
+                            putExtraInfo(result, type, res);
+
                             startActivity(result);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -114,8 +111,8 @@ public class UploadPhotoActivity extends org.devio.takephoto.app.TakePhotoActivi
                 byte[] body = new byte[0];
                 JSONObject object = new JSONObject();
                 try {
+                    object.put("position", getTypeName(type));
                     object.put("img", fileEncode);
-                    object.put("cat", "1123");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -152,5 +149,44 @@ public class UploadPhotoActivity extends org.devio.takephoto.app.TakePhotoActivi
 
             }
         });
+    }
+
+    public String getTypeName (int id) {
+        if (id == R.id.test_choice_brain) return "Brain";
+        if (id == R.id.test_choice_breast) return "Breast";
+        if (id == R.id.test_choice_lung) return "Chest";
+        return "Breast";
+    }
+
+    public void putExtraInfo(Intent result, int id, JSONObject res) throws JSONException {
+        if (id == R.id.test_choice_brain) {
+            int glioma = res.getInt("glioma");
+            int meningioma = res.getInt("meningioma");
+            int normal = res.getInt("normal");
+            int pituitary = res.getInt("pituitary");
+            result.putExtra("glioma", glioma);
+            result.putExtra("meningioma", meningioma);
+            result.putExtra("normal", normal);
+            result.putExtra("pituitary", pituitary);
+        }
+        else if (id == R.id.test_choice_breast) {
+            int b = res.getInt("benign");
+            int i = res.getInt("insitu");
+            int iv = res.getInt("invasive");
+            int n = res.getInt("normal");
+            result.putExtra("benign", b);
+            result.putExtra("insitu", i);
+            result.putExtra("invasive", iv);
+            result.putExtra("normal", n);
+        }
+        else if (id == R.id.test_choice_lung) {
+            int covid = res.getInt("covid");
+            int viral = res.getInt("viral");
+            int normal = res.getInt("normal");
+            result.putExtra("covid", covid);
+            result.putExtra("viral", viral);
+            result.putExtra("normal", normal);
+        }
+        result.putExtra("type", type);
     }
 }
