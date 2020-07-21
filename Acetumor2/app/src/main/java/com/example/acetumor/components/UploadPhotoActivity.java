@@ -59,6 +59,11 @@ public class UploadPhotoActivity extends org.devio.takephoto.app.TakePhotoActivi
 
     }
 
+    @Override
+    public void takeCancel() {
+        super.onBackPressed();
+    }
+
     private static String encodeFileToBase64Binary(File file) throws Exception{
         FileInputStream fileInputStreamReader = new FileInputStream(file);
         byte[] bytes = new byte[(int)file.length()];

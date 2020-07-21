@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1041715650152",
+    "firebase_url": "https://acetumor-f37ad.firebaseio.com",
+    "project_id": "acetumor-f37ad",
+    "storage_bucket": "acetumor-f37ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041715650152:android:23ef19daba854bef1025dd",
+        "android_client_info": {
+          "package_name": "com.example.acetumor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041715650152-795mk2vfumha71hnpei9rbaqmoblfako.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.acetumor",
+            "certificate_hash": "bdcb0abf2248f75f82ab2529a8b80466801facde"
+          }
+        },
+        {
+          "client_id": "1041715650152-s3abub52epat7j09m5ppbe7ace0pdam8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCytAC0Tmf5Mo9TV9rmIud_BOTRMDJmDV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1041715650152-s3abub52epat7j09m5ppbe7ace0pdam8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

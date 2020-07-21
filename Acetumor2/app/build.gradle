@@ -41,7 +41,7 @@ dependencies {
 
     //map
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
     // take photo library
     implementation 'org.devio.takephoto:takephoto_library:4.1.0'
     // volley
@@ -52,6 +52,9 @@ dependencies {
 
     //pie chart
     implementation 'com.github.luweibin3118:PieChartView:v1.1.2'
+
+    // login with facebook
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
 
 }
 apply plugin: 'com.google.gms.google-services'
