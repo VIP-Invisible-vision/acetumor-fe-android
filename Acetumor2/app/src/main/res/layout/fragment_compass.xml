@@ -1,60 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.acetumor">
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CompassFragment">
 
-    <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="true" />
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <Button
+        android:id="@+id/B_Hospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Hospital"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        tools:targetApi="q">
-        <activity android:name=".components.TestResultActivity" />
-        <activity android:name=".components.TakePhotoActivity" />
-        <activity android:name=".components.UploadPhotoActivity" />
-        <activity android:name=".components.ResultActivity" />
-        <activity android:name=".components.UserResultActivity" />
-        <activity android:name=".components.UserForumActivity" />
-        <activity android:name=".components.UserArticleActivity" />
-        <activity android:name=".components.TestImageActivity" />
-        <activity android:name=".components.UserFeedbackActivity" />
-        <activity android:name=".components.UserInfoActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="385dp"
+        android:layout_height="352dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.147" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB7wgG-4YvZm_i2aoAeUTIU2ACxl6PvrN8" />
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
-    </application>
-
-</manifest>
+</androidx.constraintlayout.widget.ConstraintLayout>
